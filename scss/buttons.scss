@@ -1,0 +1,45 @@
+@mixin button-base {
+    padding: $spacing-normal $spacing-md;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: $font-size-normal;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease; 
+    outline: none;
+
+    &:hover {
+        transform: translateY(-3px); 
+    }
+
+    &:active {
+        transform: translateY(0); 
+    }
+}
+
+.btn {
+    @include button-base;
+    color: #fff; 
+}
+
+.btn-primary {
+    background-color: $primary-button-color;
+    &:hover {
+        background-color: darken($primary-button-color, 10%);
+    }
+}
+
+.btn-secondary {
+    background-color: $secondary-button-color;
+    &:hover {
+        background-color: darken($secondary-button-color, 10%);
+    }
+}
+
+.btn-tertiary {
+    background-color: $tertiary-button-color;
+    &:hover {
+        background-color: darken($tertiary-button-color, 10%);
+    }
+}

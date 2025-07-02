@@ -1,0 +1,181 @@
+@import 'reset';
+@import 'colors';
+@import 'font';
+@import 'spacings';
+@import 'buttons';
+@import 'generic-mixins';
+@import 'animations';
+
+body {
+    font-family: $font-family-base;
+    color: $text-color;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f8f8f8; 
+}
+
+.full-width {
+    width: 100%;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $spacing-normal; 
+    box-sizing: border-box;
+}
+
+// Navbar
+.navbar {
+    background-color: #fff;
+    padding: $spacing-normal 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        font-size: $font-size-lg;
+        font-weight: bold;
+        color: $primary-button-color;
+    }
+
+    nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+
+        li {
+            margin-left: $spacing-lg;
+        }
+
+        a {
+            text-decoration: none;
+            color: $text-color-dark; 
+            font-weight: 500;
+            transition: color 0.3s ease;
+
+            &:hover {
+                color: $primary-button-color;
+            }
+        }
+    }
+}
+
+// Hero Section
+.hero-section {
+    background-color: $bg-hero-color;
+    color: $text-color;
+    padding: $spacing-xxl 0;
+    display: flex;
+    align-items: center; 
+
+    .hero-content {
+        display: flex;
+        align-items: center;
+        gap: $spacing-xxl; 
+        flex-wrap: wrap; 
+
+        @media (max-width: 992px) {
+            flex-direction: column;
+            text-align: center;
+        }
+    }
+
+    .text-content {
+        flex: 1;
+        min-width: 300px; 
+
+        .headline {
+            margin-bottom: $spacing-normal;
+            animation: var(--animation-name) var(--animation-duration) var(--animation-timing-function) var(--animation-delay) forwards;
+            opacity: 0; 
+        }
+
+        .description {
+            font-size: $font-size-md;
+            line-height: 1.6;
+            margin-bottom: $spacing-lg;
+            animation: var(--animation-name) var(--animation-duration) var(--animation-timing-function) var(--animation-delay) forwards;
+            opacity: 0; 
+        }
+
+        .buttons-group {
+            display: flex;
+            gap: $spacing-normal;
+
+            @media (max-width: 992px) {
+                justify-content: center;
+            }
+
+            .btn {
+                animation: var(--animation-name) var(--animation-duration) var(--animation-timing-function) var(--animation-delay) forwards;
+                opacity: 0; 
+            }
+        }
+    }
+
+    .image-content {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include floating($border: 2px solid rgba(255, 255, 255, 0.5)); 
+        animation: var(--animation-name) var(--animation-duration) var(--animation-timing-function) var(--animation-delay) forwards;
+        opacity: 0;
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: $border-radius-normal; 
+        }
+    }
+}
+
+// Image Grid
+.image-grid {
+    background-color: #fff;
+    padding: $spacing-xxl 0;
+    @include grid(4); 
+
+    @media (max-width: 992px) {
+        @include grid(2); 
+    }
+
+    @media (max-width: 576px) {
+        @include grid(1); 
+    }
+
+    .grid-item {
+        background-color: #fff;
+        padding: $spacing-normal;
+        text-align: center;
+        @include floating($box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1), $border: none);
+        animation: var(--animation-name) var(--animation-duration) var(--animation-timing-function) var(--animation-delay) forwards;
+        opacity: 0; 
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: $border-radius-normal; 
+            display: block; 
+            margin: 0 auto; 
+        }
+    }
+}
+
+
+[data-animation-name] {
+    @include apply-animation(
+        var(--animation-name),
+        var(--animation-duration),
+        ease-out, 
+        var(--animation-delay)
+    );
+}

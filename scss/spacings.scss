@@ -1,0 +1,30 @@
+$spacing-sm: 0.5rem;
+$spacing-normal: 1rem; 
+$spacing-md: 1.5rem;   
+$spacing-lg: 2rem;     
+$spacing-xl: 3rem;     
+$spacing-xxl: 4rem;    
+
+@each $direction in (block, inline) {
+    @each $size-name, $size-value in (sm: $spacing-sm, normal: $spacing-normal, md: $spacing-md, lg: $spacing-lg, xl: $spacing-xl, xxl: $spacing-xxl) {
+        .spc-padding-#{$direction}-#{$size-name} {
+            @if $direction == block {
+                padding-top: $size-value;
+                padding-bottom: $size-value;
+            } @else {
+                padding-left: $size-value;
+                padding-right: $size-value;
+            }
+        }
+
+        .spc-margin-#{$direction}-#{$size-name} {
+            @if $direction == block {
+                margin-top: $size-value;
+                margin-bottom: $size-value;
+            } @else {
+                margin-left: $size-value;
+                margin-right: $size-value;
+            }
+        }
+    }
+}
